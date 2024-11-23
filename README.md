@@ -39,7 +39,7 @@ aws-cost-tagging-automation/
 │       ├── main.tf           # Creates tagging policy and attaches to targets
 │       ├── outputs.tf        # Outputs tagging policy IDs
 │       ├── variables.tf      # Variables for tagging module
-
+```
 <h1 id="usage">Usage</h1>
 <h2 id="steps-to-deploy">Steps to Deploy</h2>
 
