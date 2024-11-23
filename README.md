@@ -309,7 +309,7 @@ Add the following line:
 This schedules the script to run at 9:00 AM on the first Monday of every two weeks.
 
 <p>An automated script that can automatically shut down unused resources after getting confirmation, scale down over-provisioned services, and recommend cost savings. Note: This is an updated version of the script above</p><br>
-```markdown
+
 
 #!/bin/bash
 
@@ -441,7 +441,7 @@ send_email "Terraform Resources Destroyed" \
     "Terraform automation has successfully destroyed the resources after $LIFETIME_HOURS hours."
 
 echo "Terraform automation completed successfully." | tee -a "$LOG_FILE"
-```
+
 
 <h1><p>Further explanations:</p></h1>
 
