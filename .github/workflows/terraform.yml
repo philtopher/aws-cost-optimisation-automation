@@ -60,8 +60,8 @@ jobs:
   periodic-lifecycle:
     # Run the lifecycle script every two weeks on the first Monday
     runs-on: ubuntu-latest
-    schedule:
-      - cron: "0 0 * * 1" # Adjust to desired time (UTC) for Monday execution
+    #schedule:
+     # - cron: "0 0 * * 1" # Adjust to desired time (UTC) for Monday execution
 
     steps:
       # Step 1: Checkout the code
