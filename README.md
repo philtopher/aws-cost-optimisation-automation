@@ -141,7 +141,7 @@ resource "aws_organizations_policy_attachment" "tagging_policy_attachment" {
   target_id = each.value
 }
 ```
-```markdown
+
 <h1 id="inputs-and-outputs">Inputs and Outputs</h1>
 <h2 id="inputs">Inputs</h2>
 Name	Description	Type	Default
@@ -165,7 +165,6 @@ Contributions are welcome! Please fork the repository, make your changes, and cr
 This project is licensed under the MIT License.
 
 <h1 id="contact">Contact</h1>
-```
 
 For questions or support, contact tufort-facebk@yahoo.co.uk
 
