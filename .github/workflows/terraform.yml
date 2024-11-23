@@ -1,13 +1,13 @@
 name: Terraform Project Workflow
 
 on:
-  # Trigger workflow on push or pull request to main branch
+  # Trigger workflow on push or pull request to master branch
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
   # Trigger workflow manually
   workflow_dispatch:
