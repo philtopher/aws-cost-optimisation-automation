@@ -27,17 +27,17 @@ jobs:
         with:
           terraform_version: 1.5.0
 
-      # Step 3: Validate Terraform configuration
+      # Step 3: Initialize Terraform
+      - name: Terraform Init
+        run: terraform init
+
+      # Step 4: Validate Terraform configuration
       - name: Terraform Validate
         run: terraform validate
 
-      # Step 4: Format Terraform code
+      # Step 5: Format Terraform code
       - name: Terraform Format
         run: terraform fmt -check
-
-      # Step 5: Initialize Terraform
-      - name: Terraform Init
-        run: terraform init
 
       # Step 6: Terraform Plan
       - name: Terraform Plan
