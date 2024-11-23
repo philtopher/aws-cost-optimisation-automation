@@ -161,10 +161,10 @@ Budget Management (budgets:*).
 Modify terraform.tfvars as needed to customize target OUs/accounts and budget configurations.<br>
 
 <p>Here’s a Bash script that integrates error handling to stop the process and send an email notification if any Terraform command fails. This ensures reliability and keeps the user/admin informed about the failure.</p>
-```markdown
+
 
 #!/bin/bash
-```
+
 ```markdown
 # Configuration
 WORK_DIR="/path/to/terraform/project"  # Replace with the actual path
