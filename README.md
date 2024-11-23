@@ -160,13 +160,35 @@ Managing AWS Organizations (organizations:*).
 Budget Management (budgets:*).
 Modify terraform.tfvars as needed to customize target OUs/accounts and budget configurations.<br>
 
+<h2>Note: Before running the Github Actions workflow do the following:</h2><br>
+1. Instead of requiring interactive input, provide a default value in the root variables.tf file with an example below:
+```markdown
+variable "ou_ids" {
+  type    = list(string)
+  default = ["ou-example1", "ou-example2"] #default values, you can replace the ou-example.. with yours
+  description = "List of OU IDs where policies should apply"
+}
+```
+<br>
+2. Alternatively, you can pass the variable value through an environment variable in the GitHub Actions workflow:
+```markdown
+env:
+  TF_VAR_ou_ids: '["ou-example1", "ou-example2"]'
+
+```
+<br>
+3. If you run the workflow without doing No. 1 or 2 above the workflow will run indefintely because it will be waiting for input
+<br>
+
 <p>Here’s a Bash script that integrates error handling to stop the process and send an email notification if any Terraform command fails. This ensures reliability and keeps the user/admin informed about the failure.</p>
 
 
-
+```markdown
 #!/bin/bash
-
+```
 # Configuration
+```markdown
+
 WORK_DIR="/path/to/terraform/project"  # Replace with the actual path
 EMAIL="admin@example.com"             # Replace with your email address
 LOG_FILE="/tmp/terraform_execution.log"
@@ -247,7 +269,7 @@ send_email "Terraform Resources Destroyed" \
     "Terraform automation has successfully destroyed the resources after $LIFETIME_HOURS hours."
 
 echo "Terraform automation completed successfully." | tee -a "$LOG_FILE"
-
+```
 
 <p>How the Script Works:</p>
 1. Error Handling: After every Terraform command (init, validate, plan, apply, and destroy), the check_error function verifies the exit status. If a command fails, the script:
