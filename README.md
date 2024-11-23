@@ -158,22 +158,14 @@ Ensure that your AWS account has AWS Organizations enabled.
 The IAM user/role running Terraform must have permissions for:
 Managing AWS Organizations (organizations:*).
 Budget Management (budgets:*).
-Modify terraform.tfvars as needed to customize target OUs/accounts and budget configurations.
-<h1 id="contributing">Contributing</h1>
-Contributions are welcome! Please fork the repository, make your changes, and create a pull request.
-
-<h1 id="license">License</h1>
-This project is licensed under the MIT License.
-
-<h1 id="contact">Contact</h1>
-
-For questions or support, contact tufort-facebk@yahoo.co.uk
+Modify terraform.tfvars as needed to customize target OUs/accounts and budget configurations.<br>
 
 <p>Here’s a Bash script that integrates error handling to stop the process and send an email notification if any Terraform command fails. This ensures reliability and keeps the user/admin informed about the failure.</p>
 ```markdown
 
 #!/bin/bash
-
+```
+```markdown
 # Configuration
 WORK_DIR="/path/to/terraform/project"  # Replace with the actual path
 EMAIL="admin@example.com"             # Replace with your email address
@@ -429,25 +421,35 @@ send_email "Terraform Resources Destroyed" \
 echo "Terraform automation completed successfully." | tee -a "$LOG_FILE"
 ```
 
-<p>Further explanations:</p>
+<h1><p>Further explanations:</p></h1>
 
-1. Unused Resources:<br>
+<h3>1. Unused Resources:</h3><br>
 
 Identifies unused resources using terraform show (replace with actual logic based on your setup).
 Prompts for user confirmation before removing them.
 
-2. Scaling Down Services:<br>
+<h3>2. Scaling Down Services:</h3><br>
 
 Mock command demonstrates the use of a variable (scale=down) to trigger scaling changes. Replace it with your actual logic.
 
-3. Cost Savings Recommendations:<br>
+<h3>3. Cost Savings Recommendations:</h3><br>
 
 Analyzes the Terraform state to identify cost-saving opportunities and logs them.
 
-4. Error Handling:<br>
+<h3>4. Error Handling:</h3><br>
 
 Stops the process and sends an email if any command fails.
 
-5. Lifecycle Management:<br>
+<h3>5. Lifecycle Management:</h3><br>
 
-Ensures resources are shut down after a set lifetime with proper notifications.
+Ensures resources are shut down after a set lifetime with proper notifications.</h3><br>
+
+<h1 id="contributing">Contributing</h1>
+Contributions are welcome! Please fork the repository, make your changes, and create a pull request.
+
+<h1 id="license">License</h1>
+This project is licensed under the MIT License.
+
+<h1 id="contact">Contact</h1>
+
+For questions or support, contact tufort-facebk@yahoo.co.uk
