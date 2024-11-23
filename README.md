@@ -184,10 +184,9 @@ env:
 
 
 ```markdown
-#!/bin/bash
-```
 # Configuration
-```markdown
+
+#!/bin/bash
 
 WORK_DIR="/path/to/terraform/project"  # Replace with the actual path
 EMAIL="admin@example.com"             # Replace with your email address
@@ -271,7 +270,7 @@ send_email "Terraform Resources Destroyed" \
 echo "Terraform automation completed successfully." | tee -a "$LOG_FILE"
 ```
 
-<p>How the Script Works:</p>
+<p><h3></h3>How the Script Works:</h3></p>
 1. Error Handling: After every Terraform command (init, validate, plan, apply, and destroy), the check_error function verifies the exit status. If a command fails, the script:
 
 Sends an email to the admin with the error message and log file location.
