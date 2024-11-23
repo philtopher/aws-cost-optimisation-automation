@@ -1,0 +1,78 @@
+name: Terraform Project Workflow
+
+on:
+  # Trigger workflow on push or pull request to main branch
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+  # Trigger workflow manually
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Terraform
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      # Step 3: Validate Terraform configuration
+      - name: Terraform Validate
+        run: terraform validate
+
+      # Step 4: Format Terraform code
+      - name: Terraform Format
+        run: terraform fmt -check
+
+      # Step 5: Initialize Terraform
+      - name: Terraform Init
+        run: terraform init
+
+      # Step 6: Terraform Plan
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      # Step 7: Apply Terraform Plan (manual approval)
+      - name: Terraform Apply
+        if: github.event_name == 'workflow_dispatch'
+        run: terraform apply -auto-approve tfplan
+
+      # Step 8: Invoke Bash Script for Lifecycle Management
+      - name: Invoke Lifecycle Management Script
+        env:
+          WORK_DIR: ${{ github.workspace }}
+          EMAIL: "admin@example.com" # Replace with actual email
+        run: |
+          chmod +x ./lifecycle_management.sh
+          ./lifecycle_management.sh
+
+  periodic-lifecycle:
+    # Run the lifecycle script every two weeks on the first Monday
+    runs-on: ubuntu-latest
+    schedule:
+      - cron: "0 0 * * 1" # Adjust to desired time (UTC) for Monday execution
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Run the Lifecycle Management Script
+      - name: Run Lifecycle Management
+        env:
+          WORK_DIR: ${{ github.workspace }}
+          EMAIL: "admin@example.com" # Replace with actual email
+        run: |
+          chmod +x ./lifecycle_management.sh
+          ./lifecycle_management.sh
