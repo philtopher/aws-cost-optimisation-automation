@@ -41,11 +41,12 @@ aws-cost-tagging-automation/
 │       ├── variables.tf      # Variables for tagging module
 ```
 <h1 id="usage">Usage</h1>
-<h2 id="steps-to-deploy">Steps to Deploy</h2>
+<h2 id="steps-to-deploy">Steps to Deploy</h2> <br>
+
 
 Clone the Repository:
 
-git clone https://github.com/your-repo/aws-cost-tagging-automation.git
+git clone https://github.com/your-repo/aws-cost-tagging-automation.git <br>
 cd aws-cost-tagging-automation
 
 Set Up Terraform:
