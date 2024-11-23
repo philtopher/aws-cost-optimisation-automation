@@ -60,11 +60,11 @@ terraform validate
 Customize Variables:
 
 Create a terraform.tfvars file in the root directory and define required variables:
-
+```markdown
 region = "us-east-1"
 parent_id = "r-xxxx"  # AWS Organization root ID
 organization_target_ids = ["ou-xxxx-xxxxx", "account-id"]  # Replace with actual target IDs
-
+```
 Apply the Configuration:
 
 terraform apply
@@ -82,6 +82,7 @@ outputs.tf: Outputs created budget names.
 variables.tf: Defines required variables, such as the AWS region.
 
 Example Resource
+```markdown
 
 resource "aws_budgets_budget" "example" {
   name         = "example-budget"
@@ -97,6 +98,8 @@ resource "aws_budgets_budget" "example" {
     ]
   }
 }
+```
+
 <h2 id="tagging-module">Tagging Module</h2>
 Purpose: Enforces tagging policies to ensure AWS resource compliance.
 Files:
@@ -105,6 +108,7 @@ outputs.tf: Outputs IDs of applied tagging policies.
 variables.tf: Defines required variables like target_ids.
 
 Example Resources
+```markdown
 
 resource "aws_organizations_policy" "tagging_policy" {
   name        = "TaggingPolicy"
@@ -136,6 +140,8 @@ resource "aws_organizations_policy_attachment" "tagging_policy_attachment" {
   policy_id = aws_organizations_policy.tagging_policy.id
   target_id = each.value
 }
+```
+
 <h1 id="inputs-and-outputs">Inputs and Outputs</h1>
 <h2 id="inputs">Inputs</h2>
 Name	Description	Type	Default
@@ -162,6 +168,7 @@ This project is licensed under the MIT License.
 For questions or support, contact tufort-facebk@yahoo.co.uk
 
 <p>Here’s a Bash script that integrates error handling to stop the process and send an email notification if any Terraform command fails. This ensures reliability and keeps the user/admin informed about the failure.</p>
+```markdown
 
 #!/bin/bash
 
@@ -246,6 +253,7 @@ send_email "Terraform Resources Destroyed" \
     "Terraform automation has successfully destroyed the resources after $LIFETIME_HOURS hours."
 
 echo "Terraform automation completed successfully." | tee -a "$LOG_FILE"
+```
 
 <p>How the Script Works:</p>
 1. Error Handling: After every Terraform command (init, validate, plan, apply, and destroy), the check_error function verifies the exit status. If a command fails, the script:
@@ -285,6 +293,7 @@ Add the following line:
 This schedules the script to run at 9:00 AM on the first Monday of every two weeks.
 
 <p>An automated script that can automatically shut down unused resources after getting confirmation, scale down over-provisioned services, and recommend cost savings. Note: This is an updated version of the script above</p><br>
+```markdown
 
 #!/bin/bash
 
@@ -416,6 +425,7 @@ send_email "Terraform Resources Destroyed" \
     "Terraform automation has successfully destroyed the resources after $LIFETIME_HOURS hours."
 
 echo "Terraform automation completed successfully." | tee -a "$LOG_FILE"
+```
 
 <p>Further explanations:</p>
 
