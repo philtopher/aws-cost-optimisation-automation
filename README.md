@@ -163,7 +163,7 @@ Modify terraform.tfvars as needed to customize target OUs/accounts and budget co
 <p>Here’s a Bash script that integrates error handling to stop the process and send an email notification if any Terraform command fails. This ensures reliability and keeps the user/admin informed about the failure.</p>
 
 
-```markdown
+
 #!/bin/bash
 
 # Configuration
@@ -247,7 +247,7 @@ send_email "Terraform Resources Destroyed" \
     "Terraform automation has successfully destroyed the resources after $LIFETIME_HOURS hours."
 
 echo "Terraform automation completed successfully." | tee -a "$LOG_FILE"
-```
+
 
 <p>How the Script Works:</p>
 1. Error Handling: After every Terraform command (init, validate, plan, apply, and destroy), the check_error function verifies the exit status. If a command fails, the script:
